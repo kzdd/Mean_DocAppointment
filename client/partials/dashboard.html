@@ -1,0 +1,47 @@
+<div class="container" id="dashboard" ng-controller="appointmentsController">
+	<div class="row">
+		<div class="col-sm-2 col-sm-offset-11">
+			<button type="submit" class="btn btn-link" ng-click="logout()">Logout</button>
+		</div>
+		<div class="col-sm-8">
+			<h1>Doctor's Appointments</h1>
+			<h4>Welcome, <span ng-bind="user" id="dash-user"></span>!</h4>
+		</div>
+		<div class="col-sm-12">
+			<h3 id="error"></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="col-sm-3 col-sm-offset-9" id="search-dash">
+				<input type="text" class="form-control" ng-model="filter_appointments" placeholder="Search...">
+			</div>
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Patient Name</th>
+						<th>Complain</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-show="appointment.date >= currentDate" ng-repeat="appointment in appointments | filter : filter_appointments | orderBy:'date'">
+						<td><span ng-bind="appointment.date"></span></td>
+						<td><span ng-bind='appointment.time'></span></td>
+						<td><span ng-bind='appointment.patient'></span></td>
+						<td><span ng-bind='appointment.complain'></span>
+						<button ng-show="appointment.patient == user && appointment.date > currentDate" ng-click='destroyAppointment(appointment._id)' class="btn btn-danger btn-xs">Cancel</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- <button ng-show="appointments.length - appointmentCount > 0" ng-click='appointmentCount = appointmentCount + 2' class="btn btn-link">show more appointments ({{appointments.length - appointmentCount}} left)...</button>
+			<button ng-show="appointments.length - appointmentCount > 0" ng-click='appointmentCount = appointmentCount + (appointments.length - appointmentCount)' class="btn btn-link">show all...</button> -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1 col-sm-offset-9">
+			<a href="#/newAppointment" class="btn btn-primary">Add New Appointment</a>
+		</div>
+	</div>
+</div>

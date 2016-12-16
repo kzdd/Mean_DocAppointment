@@ -1,0 +1,31 @@
+<div class="container" id="newAppointment" ng-controller="appointmentsController">
+	<div class="row">
+		<button class="btn btn-link"><a href="#/dashboard">Dashboard</a></button>
+		<button type="submit" class="btn btn-link" ng-click="logout()">Logout</button>
+		<div class="col-sm-8">
+			<h1>New Appointment</h1>
+		</div>
+		<div class="col-sm-12">
+			<h3 id="error"></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="col-sm-4">
+				<h4>Date</h4>
+				<input id="appt-date" type="text" class="form-control" ng-model="newAppt.date">
+			</div>
+			<div class="col-sm-4">
+				<h4>Time</h4>
+				<input value="8:00am" id="appt-time" type="text" class="form-control ul-timepicker-input" ng-model="newAppt.time">
+			</div>
+			<div class="col-sm-8">
+				<h4>Complain</h4>
+				<textarea class="form-control" rows="6" placeholder="Complain here..." ng-model="newAppt.complain"></textarea>
+			</div>
+			<div class="col-sm-4 col-sm-offset-4">
+				<button class="btn btn-primary" ng-click="addNewAppt()">Add New Appointment</button>
+			</div>
+		</div>
+	</div>
+</div>
